@@ -70,6 +70,41 @@ git config --local user.email "seu@email.aqui"
 
 `cat ~/.ssh/id_rsa.pub` - para exibir a chave SSH
 
+# Criando uma Nova Chave SSH
+
+- **`ls -l ~/.ssh/`**
+    - Lista os arquivos no diretório `~/.ssh/` com detalhes (permissões, dono, tamanho, data de modificação).
+    - Útil para verificar quais chaves SSH já existem no sistema.
+    
+- **`ssh-keygen -t rsa -b 4096 -C "seu-email@example.com" -f ~/.ssh/minha-nova-chave`**
+    - Gera um novo par de chaves SSH usando o algoritmo RSA de 4096 bits.
+    - `-C "seu-email@example.com"`: Adiciona um comentário (normalmente o e-mail) à chave, útil para identificação.
+    - `-f ~/.ssh/minha-nova-chave`: Define o caminho e o nome do arquivo da nova chave privada.
+    - Isso criará dois arquivos:
+        - `~/.ssh/minha-nova-chave` (chave privada)
+        - `~/.ssh/minha-nova-chave.pub` (chave pública)
+        
+- **`eval "$(ssh-agent -s)"`**
+    - Inicia o agente SSH, um processo que gerencia chaves privadas e permite autenticação sem precisar digitar a senha sempre.
+    - O comando `eval` garante que as variáveis de ambiente necessárias sejam carregadas no shell.
+    
+- **`ssh-add ~/.ssh/id_rsa`**
+    - Adiciona a chave privada `id_rsa` ao agente SSH para uso em conexões seguras.
+    - Isso evita a necessidade de digitar a senha da chave privada toda vez que for usada.
+    
+- **`ssh-add ~/.ssh/minha-nova-chave`**
+    - Adiciona a chave privada recém-criada `minha-nova-chave` ao agente SSH.
+    - Útil se você estiver usando múltiplas chaves SSH.
+
+- **`ssh-add -l`**
+    - Lista as chaves atualmente carregadas no agente SSH.
+    - Útil para confirmar que a chave correta foi adicionada e está pronta para uso.
+    
+- **`cat ~/.ssh/minha-nova-chave.pub`**
+    - Exibe o conteúdo da chave pública `minha-nova-chave.pub`.
+    - Essa chave deve ser adicionada a servidores remotos (como GitHub, GitLab, servidores SSH) para autenticação.
+    - Pode ser copiada e colada no campo apropriado da plataforma que você deseja acessar.
+
 # Clonando Repositório com os Submódulos
 
 `—recursive` - Para clonar com os submódulos.
