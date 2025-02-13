@@ -67,7 +67,6 @@ git config --local user.email "seu@email.aqui"
 # Gerando Chave SSH
 
 `ssh-keygen -t rsa -C "meu-email@email.com"` - Para gerar a chave SSH RSA.
-
 `cat ~/.ssh/id_rsa.pub` - para exibir a chave SSH
 
 # Criando uma Nova Chave SSH
@@ -108,7 +107,6 @@ git config --local user.email "seu@email.aqui"
 # Clonando Repositório com os Submódulos
 
 `—recursive` - Para clonar com os submódulos.
-
 `git clone —recursive git.com/repo` - Exemplo.
 
 # Fluxo de Trabalho
@@ -141,3 +139,22 @@ Agora só dar um CTRL + Click Esquerdo no link que está no chat para abrir a pa
 `git rebase --continue` - Da continuidade com o rebase.
 `:wq` (Abrindo um terminal VIM digite esse comando pra prosseguir) - encerra o terminal VIM.
 `git push -f origin sua-branch` - Envia de forma forçada para a sua branch remota.
+
+# Adicionar Submódulos
+
+`git submodule add <URL-do-repositório> <nome-da-pasta/nome-do-plugin>` - Adiciona o submódulo
+`git submodule update --init --recursive` - Atualiza de forma recursiva os submódulos do repositório local
+
+**Clonando um repositório com submódulos**
+
+`git clone --recurse-submodules <URL-do-repositório>`
+
+**Atualizando submódulos após mudanças no repositório principal**
+
+`git submodule update --remote --merge`
+
+**Remover Submodule**
+
+`git submodule deinit -f <caminho-do-submódulo>`
+`rm -rf <caminho-do-submódulo>`
+`git rm -f <caminho-do-submódulo>`
