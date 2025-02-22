@@ -1,160 +1,553 @@
 
 
 ![[Git-Icon-1788C.webp]]
-# Comandos
 
-`git —help` - Comando de Ajuda.
 
-`git init` - para iniciar um repositório git.
+## Comandos de Ajuda e Configuração
 
-> `git init --bare` - para tornar o repositório como remoto (servidor)
+- **Ajuda do Git:**
+    
+    - `git --help`  
+        Exibe a ajuda e documentação dos comandos Git.
+- **Configuração de Usuário:**  
+    Configure seu nome e e-mail para que os commits sejam atribuídos corretamente.
+    
+    bash
+    
+    CopiarEditar
+    
+    `git config --local user.name "Seu nome aqui" git config --local user.email "seu@email.aqui"`
+    
+    > _Observação:_ Essas configurações podem ser definidas de forma local (somente para o repositório atual) ou global (para todos os repositórios) usando a opção `--global`.
+    
+- **Verificar/Editar Configurações:**
+    
+    - `git config`  
+        Exibe ou permite editar as configurações do Git.
+        
+        > Use `--local` para o repositório atual ou `--global` para todas as instâncias.
+        
 
-`git status` - para verificar o status do repositório.
+---
 
-```livescript
-git config --local user.name "Seu nome aqui"
-git config --local user.email "seu@email.aqui"
-```
+## Inicializando Repositórios
 
-> Estes códigos acima são necessários para configurar as sua conta do github.
+- **Criar um novo repositório:**
+    
+    - `git init`  
+        Inicializa um novo repositório Git no diretório atual.
+- **Criar um repositório bare (remoto/servidor):**
+    
+    - `git init --bare`  
+        Inicializa um repositório sem área de trabalho (ideal para servidores remotos).
 
-`git add .` - Para adicionar todos os arquivos ao git.
+---
 
-`git commit -m "mensagem do commit"` - Para adicionar um comentário no commit do seu repositório.
+## Controle de Alterações (Staging e Commit)
 
-`git log` - Para verificar o log de alterações do repositório.
+- **Verificar o status dos arquivos:**
+    
+    - `git status`  
+        Mostra o estado atual do repositório, indicando arquivos modificados, adicionados ou não monitorados.
+- **Adicionar arquivos para commit:**
+    
+    - `git add .`  
+        Adiciona todos os arquivos e mudanças ao _staging area_.
+- **Registrar as alterações com uma mensagem:**
+    
+    - `git commit -m "mensagem do commit"`  
+        Cria um commit com as alterações adicionadas e inclui uma mensagem descritiva.
 
-> —online - para exibir o último log, -p - para verificar as alterações
+---
 
-`git config` - Para verificar ou editar as configurações.
+## Histórico e Diferenças
 
-> —local - para mudar as configurações para o repositório atual, —global - para mudar as configurações para todos os repositórios.
+- **Histórico de commits:**
+    
+    - `git log`  
+        Exibe o histórico dos commits do repositório.
+        
+        > Dicas:
+        > 
+        > - `git log --oneline` exibe um log resumido com cada commit em uma única linha.
+        > - `git log -p` mostra as diferenças (patches) de cada commit.
+        > 
+        > Para mais opções, veja [Devhints Git Log](https://devhints.io/git-log).
+        
+- **Visualizar diferenças entre estados:**
+    
+    - `git diff`  
+        Mostra as alterações entre o estado atual dos arquivos e o último commit.
+        
+        > Dicas:
+        > 
+        > - Use `git diff --cached` ou `git diff --staged` para ver as diferenças dos arquivos já adicionados ao _staging area_.
+        
 
-[Comandos para o](https://devhints.io/git-log) `git log`
+---
 
-> `git log —online` - Mostra o Log dos commits.
+## Trabalhando com Branches
 
-`git remote add local` - Para adicionar uma pasta de um servidor
+- **Navegar entre branches e criar uma nova branch:**
+    - `git checkout`  
+        Muda de branch.
+        
+        > Exemplo para criar e mudar para uma nova branch:  
+        > `git checkout -b nome-da-branch`
+        
 
-> `git remote add nome-repositorio caminho/para/o/repositorio`
+---
 
-`git clone` - para clonar um repositório.
+## Repositórios Remotos e Clonagem
 
-> `git clone` URL nome do projeto
+- **Adicionar um repositório remoto:**
+    
+    - `git remote add nome-repositorio caminho/para/o/repositorio`  
+        Associa um repositório remoto ao seu projeto com o nome especificado.
+- **Clonar um repositório:**
+    
+    - `git clone URL nome-do-projeto`  
+        Clona o repositório do URL informado para uma nova pasta com o nome especificado.
+    - **Clonando uma branch específica:**
+        - `git clone -b nome-da-branch URL`  
+            Clona o repositório e já muda para a branch desejada.
 
-> `git clone -b branch link do projeto`
+---
 
-`git push` - Para enviar os dados para o repositório.
+## Enviando e Recebendo Alterações (Push e Pull)
 
-> `git push local master`
-
-> `git push --set-upstream develop ricardo` - fazendo o push para a branch develop pela branch ricardo
-
-`git pull` - Para buscar os dados do repositório
-
-> `git push local master`
-
-`git diff` - Exibe as modificações que o arquivo sofreu.
-
-> `git diff —estado do arquivo` - estados —cached, —staged
-
-`git checkout` - Navega entre as branchs
-
-> `git checkout -b nome da branch` - Cria e muda para a branch criada.
+- **Enviar commits para o repositório remoto:**
+    
+    - `git push`  
+        Transfere as alterações locais para o repositório remoto.
+        
+        > Exemplos:
+        > 
+        > - `git push local master`  
+        >     Envia a branch master para o remoto nomeado "local".
+        > - `git push --set-upstream develop ricardo`  
+        >     Faz o push da branch develop, configurando o upstream para a branch "ricardo".
+        
+- **Buscar e integrar alterações do repositório remoto:**
+    
+    - `git pull`  
+        Atualiza o repositório local com as alterações existentes no repositório remoto.
+        
+        > _Observação:_ No exemplo original, havia uma referência incorreta para `git push` em vez de `git pull`.
 
 ![[WhatsApp Image 2023-02-14 at 14.38.43.jpeg]]
 
-# Gerando Chave SSH
+### Gerando e Gerenciando Chaves SSH
 
-`ssh-keygen -t rsa -C "meu-email@email.com"` - Para gerar a chave SSH RSA.
-`cat ~/.ssh/id_rsa.pub` - para exibir a chave SSH
+### Gerando a Chave SSH Padrão
 
-# Criando uma Nova Chave SSH
-
-- **`ls -l ~/.ssh/`**
-    - Lista os arquivos no diretório `~/.ssh/` com detalhes (permissões, dono, tamanho, data de modificação).
-    - Útil para verificar quais chaves SSH já existem no sistema.
+- **Gerar chave SSH RSA (padrão):**
     
-- **`ssh-keygen -t rsa -b 4096 -C "seu-email@example.com" -f ~/.ssh/minha-nova-chave`**
-    - Gera um novo par de chaves SSH usando o algoritmo RSA de 4096 bits.
-    - `-C "seu-email@example.com"`: Adiciona um comentário (normalmente o e-mail) à chave, útil para identificação.
-    - `-f ~/.ssh/minha-nova-chave`: Define o caminho e o nome do arquivo da nova chave privada.
-    - Isso criará dois arquivos:
-        - `~/.ssh/minha-nova-chave` (chave privada)
-        - `~/.ssh/minha-nova-chave.pub` (chave pública)
+    bash
+    
+    CopiarEditar
+    
+    `ssh-keygen -t rsa -C "meu-email@email.com"`
+    
+    _Gera um par de chaves (pública e privada) utilizando o algoritmo RSA e adiciona um comentário (seu e-mail) para identificação._
+    
+- **Exibir a chave pública:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `cat ~/.ssh/id_rsa.pub`
+    
+    _Mostra o conteúdo da chave pública gerada, que pode ser copiada para plataformas como GitHub ou GitLab._
+    
+
+---
+
+### Criando uma Nova Chave SSH (com configurações avançadas)
+
+- **Listar arquivos do diretório SSH:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `ls -l ~/.ssh/`
+    
+    _Exibe os arquivos presentes em `~/.ssh/` com detalhes, ajudando a identificar chaves já existentes._
+    
+- **Gerar nova chave SSH com parâmetros customizados:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `ssh-keygen -t rsa -b 4096 -C "seu-email@example.com" -f ~/.ssh/minha-nova-chave`
+    
+    _Gera um par de chaves RSA com 4096 bits, adicionando um comentário e salvando em um arquivo específico (`minha-nova-chave`), criando também o arquivo público (`minha-nova-chave.pub`)._
+    
+- **Iniciar o agente SSH:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `eval "$(ssh-agent -s)"`
+    
+    _Inicia o processo do agente SSH, que gerencia suas chaves e facilita a autenticação sem precisar inserir a senha repetidamente._
+    
+- **Adicionar chaves ao agente SSH:**
+    
+    - Adicionando a chave padrão:
         
-- **`eval "$(ssh-agent -s)"`**
-    - Inicia o agente SSH, um processo que gerencia chaves privadas e permite autenticação sem precisar digitar a senha sempre.
-    - O comando `eval` garante que as variáveis de ambiente necessárias sejam carregadas no shell.
+        bash
+        
+        CopiarEditar
+        
+        `ssh-add ~/.ssh/id_rsa`
+        
+    - Adicionando a nova chave criada:
+        
+        bash
+        
+        CopiarEditar
+        
+        `ssh-add ~/.ssh/minha-nova-chave`
+        
     
-- **`ssh-add ~/.ssh/id_rsa`**
-    - Adiciona a chave privada `id_rsa` ao agente SSH para uso em conexões seguras.
-    - Isso evita a necessidade de digitar a senha da chave privada toda vez que for usada.
+    _Ambos os comandos adicionam suas respectivas chaves privadas ao agente SSH para uso em conexões seguras._
     
-- **`ssh-add ~/.ssh/minha-nova-chave`**
-    - Adiciona a chave privada recém-criada `minha-nova-chave` ao agente SSH.
-    - Útil se você estiver usando múltiplas chaves SSH.
-
-- **`ssh-add -l`**
-    - Lista as chaves atualmente carregadas no agente SSH.
-    - Útil para confirmar que a chave correta foi adicionada e está pronta para uso.
+- **Listar chaves carregadas no agente:**
     
-- **`cat ~/.ssh/minha-nova-chave.pub`**
-    - Exibe o conteúdo da chave pública `minha-nova-chave.pub`.
-    - Essa chave deve ser adicionada a servidores remotos (como GitHub, GitLab, servidores SSH) para autenticação.
-    - Pode ser copiada e colada no campo apropriado da plataforma que você deseja acessar.
+    bash
+    
+    CopiarEditar
+    
+    `ssh-add -l`
+    
+    _Exibe a lista de chaves atualmente gerenciadas pelo agente._
+    
+- **Exibir a nova chave pública:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `cat ~/.ssh/minha-nova-chave.pub`
+    
+    _Mostra o conteúdo da nova chave pública, que deve ser adicionada nos serviços que exigem autenticação SSH._
+    
 
-# Clonando Repositório com os Submódulos
+---
 
-`—recursive` - Para clonar com os submódulos.
-`git clone —recursive git.com/repo` - Exemplo.
+## Clonando Repositórios com Submódulos
 
-# Fluxo de Trabalho
+- **Clonagem com submódulos (opção `--recursive`):**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git clone --recursive git.com/repo`
+    
+    _Clona o repositório incluindo todos os submódulos configurados._
 
-`git status` - Verifica se tem arquivos a serem commitados.
-`git remote update` - Atualiza sua branch local.
-`git checkout origin/master` - muda para a branch master.
-`git submodule update` - atualiza os submodulos do projeto (Plugins ou Ferramentas).
-`git checkout -b nome-da-sua-branch` - cria e muda para a branch que acabou de ser criada.
-`git status` - Para garantir que não esqueceu nenhum arquivo para commitar.
+> _Observação:_ Algumas vezes, o parâmetro pode aparecer como `--recurse-submodules`, que tem a mesma função.
 
-# Enviando os Arquivos para o repositório
+---
 
-`git status` - Verifica se tem arquivos a serem commitados.
-`git add caminho/dos/arquivos/para.enviar` - Adiciona os arquivo ao seu commit.
-`git restore caminho/dos/arquivos/para.enviar` - Remove e reseta os arquivos que você não quer commitar.
-`git status` - Verifica se tem arquivos a serem commitados.
-`git commit -m "Mensagem do seu PR"` - Adiciona uma mensagem ao seu commit.
-`git push origin nome-da-sua-branch` - Envia os dados do commit para a branch remota.
-Agora só dar um CTRL + Click Esquerdo no link que está no chat para abrir a pagina do git e enviar o seu PR (Pull Request).
+## Fluxo de Trabalho com Git
 
+### Atualização e Gerenciamento do Repositório
 
-# Resolvendo Conflitos
+- **Verificar o status dos arquivos:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git status`
+    
+    _Mostra quais arquivos foram modificados, adicionados ou estão pendentes de commit._
+    
+- **Atualizar o repositório local com o remoto:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git remote update`
+    
+    _Atualiza as referências do repositório remoto._
+    
+- **Navegar para a branch master do remoto:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git checkout origin/master`
+    
+    _Muda para a branch master do repositório remoto (somente leitura)._
+    
+- **Atualizar submódulos do projeto:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git submodule update`
+    
+    _Sincroniza os submódulos com as configurações definidas no repositório principal._
+    
+- **Criar e mudar para uma nova branch:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git checkout -b nome-da-sua-branch`
+    
+    _Cria uma nova branch e muda para ela, preparando o ambiente para novos commits._
+    
+- **Verificar novamente o status:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git status`
+    
+    _Confirma se não há alterações pendentes ou arquivos esquecidos._
+    
 
-`git remote update` - Atualiza a sua branch.
-`git rebase origin/master` - recebe atualizações que estão na sua branch remota
-`git status` - verifica o estado dos arquivos.
-`git checkout --ours ou --theirs` **--ours** se for manter o da master, **--thiers** .se for alterações da sua branch seleciona qual versão você vai manter.
-`git add /NomePasta/NomeArquivo.formato` - Adiciona os arquivos para ser commitados.
-`git rebase --continue` - Da continuidade com o rebase.
-`:wq` (Abrindo um terminal VIM digite esse comando pra prosseguir) - encerra o terminal VIM.
-`git push -f origin sua-branch` - Envia de forma forçada para a sua branch remota.
+---
 
-# Adicionar Submódulos
+## Enviando Arquivos para o Repositório
 
-`git submodule add <URL-do-repositório> <nome-da-pasta/nome-do-plugin>` - Adiciona o submódulo
-`git submodule update --init --recursive` - Atualiza de forma recursiva os submódulos do repositório local
+### Preparação e Envio de Alterações
 
-**Clonando um repositório com submódulos**
+- **Verificar o status antes de enviar:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git status`
+    
+    _Confirma quais arquivos estão prontos para commit._
+    
+- **Adicionar arquivos específicos ao commit:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git add caminho/dos/arquivos/para.enviar`
+    
+    _Prepara os arquivos selecionados para o próximo commit._
+    
+- **Restaurar/descartar arquivos que não serão commitados:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git restore caminho/dos/arquivos/para.enviar`
+    
+    _Remove alterações de arquivos que não devem ser incluídos no commit._
+    
+- **Confirmar o status novamente:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git status`
+    
+    _Garante que somente os arquivos desejados estejam prontos para commit._
+    
+- **Criar um commit com mensagem:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git commit -m "Mensagem do seu PR"`
+    
+    _Registra as alterações com uma mensagem descritiva (útil para Pull Requests)._
+    
+- **Enviar os commits para o repositório remoto:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git push origin nome-da-sua-branch`
+    
+    _Envia as alterações para a branch remota correspondente._
+    
 
-`git clone --recurse-submodules <URL-do-repositório>`
+> _Dica:_ Após o push, abra o link gerado (geralmente enviado via chat ou interface web) para criar o Pull Request (PR).
 
-**Atualizando submódulos após mudanças no repositório principal**
+---
 
-`git submodule update --remote --merge`
+## Resolvendo Conflitos
 
-**Remover Submodule**
+### Processo de Resolução de Conflitos durante um Rebase
 
-`git submodule deinit -f <caminho-do-submódulo>`
-`rm -rf <caminho-do-submódulo>`
-`git rm -f <caminho-do-submódulo>`
+- **Atualizar referências do repositório remoto:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git remote update`
+    
+    _Garante que as informações estejam atualizadas antes de iniciar o rebase._
+    
+- **Realizar o rebase com a branch master:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git rebase origin/master`
+    
+    _Traz as alterações da branch master para a sua branch atual._
+    
+- **Verificar o status dos arquivos:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git status`
+    
+    _Identifica quais arquivos estão em conflito._
+    
+- **Selecionar qual versão manter:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git checkout --ours caminho/para/arquivo git checkout --theirs caminho/para/arquivo`
+    
+    _Utilize `--ours` para manter a versão da branch base (master) ou `--theirs` para manter as alterações da sua branch._
+    
+- **Adicionar os arquivos resolvidos:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git add /NomePasta/NomeArquivo.formato`
+    
+    _Marca os conflitos como resolvidos para que o rebase possa continuar._
+    
+- **Continuar o rebase:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git rebase --continue`
+    
+    _Prossegue com o processo de rebase após resolver os conflitos._
+    
+- **Encerrar o editor de texto (no VIM):**
+    
+    vim
+    
+    CopiarEditar
+    
+    `:wq`
+    
+    _No editor VIM, esse comando salva as alterações e fecha o editor._
+    
+- **Forçar o envio para o repositório remoto:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git push -f origin sua-branch`
+    
+    _Realiza um push forçado para atualizar a branch remota com as alterações rebaseadas._
+    
+
+---
+
+## Gerenciando Submódulos
+
+### Adicionar e Atualizar Submódulos
+
+- **Adicionar um submódulo ao repositório:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git submodule add <URL-do-repositório> <nome-da-pasta/nome-do-plugin>`
+    
+    _Inclui um submódulo no seu projeto, organizando código ou ferramentas externas em uma pasta específica._
+    
+- **Inicializar e atualizar submódulos:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git submodule update --init --recursive`
+    
+    _Garante que todos os submódulos sejam baixados e sincronizados com o repositório principal._
+    
+- **Clonar um repositório com submódulos automaticamente:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git clone --recurse-submodules <URL-do-repositório>`
+    
+    _Clona o repositório e seus submódulos em uma única etapa._
+    
+- **Atualizar submódulos após mudanças no repositório principal:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git submodule update --remote --merge`
+    
+    _Atualiza os submódulos para as últimas versões disponíveis, integrando eventuais mudanças._
+    
+
+### Remover um Submódulo
+
+- **Desativar o submódulo:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git submodule deinit -f <caminho-do-submódulo>`
+    
+- **Remover os arquivos fisicamente:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `rm -rf <caminho-do-submódulo>`
+    
+- **Remover o submódulo do Git:**
+    
+    bash
+    
+    CopiarEditar
+    
+    `git rm -f <caminho-do-submódulo>`
+    
+    _Esses passos removem completamente o submódulo do seu projeto._

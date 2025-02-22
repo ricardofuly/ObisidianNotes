@@ -1,24 +1,24 @@
 {
   "main": {
-    "id": "eb33a59e41c612f3",
+    "id": "fc9037689f461743",
     "type": "split",
     "children": [
       {
-        "id": "872a0253f6bbfd3b",
+        "id": "a38b0f33a9cbcc17",
         "type": "tabs",
         "children": [
           {
-            "id": "9a625333e01d8a83",
+            "id": "177e47ef730b4a5d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Git-GitHub.md",
+                "file": "GAS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Git-GitHub"
+              "title": "GAS"
             }
           }
         ]
@@ -27,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "320d637449fd243c",
+    "id": "84f960a87f81939e",
     "type": "split",
     "children": [
       {
-        "id": "14bf3a86c752da3c",
+        "id": "7e8115f4bdfaad9b",
         "type": "tabs",
         "children": [
           {
-            "id": "d6c0b9850051e9e6",
+            "id": "be14be5fb3e0b9a0",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +48,7 @@
             }
           },
           {
-            "id": "2f6394a4fca868e1",
+            "id": "41055419bc562e48",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +65,7 @@
             }
           },
           {
-            "id": "3f47828eec83bc41",
+            "id": "a003fb03e105b527",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -81,20 +81,20 @@
     "width": 300
   },
   "right": {
-    "id": "78379918defc373d",
+    "id": "b2795a9bb0a6a086",
     "type": "split",
     "children": [
       {
-        "id": "55d59b6933947eaf",
+        "id": "b4763f4ca48c39b7",
         "type": "tabs",
         "children": [
           {
-            "id": "4c912034fe1cf399",
+            "id": "82adcc4c694775b7",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Git-GitHub.md",
+                "file": "GAS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,46 +104,51 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Git-GitHub"
+              "title": "Backlinks for GAS"
             }
           },
           {
-            "id": "c8465f9282c9b308",
+            "id": "ed0be9c2afcd7cab",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Git-GitHub.md",
+                "file": "GAS.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Git-GitHub"
+              "title": "Outgoing links from GAS"
             }
           },
           {
-            "id": "26beaae5ebe613da",
+            "id": "9e10ee6f34d884fc",
             "type": "leaf",
             "state": {
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-tags",
               "title": "Tags"
             }
           },
           {
-            "id": "ea690f618f788fe9",
+            "id": "d90ca8608a7ed1ce",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Git-GitHub.md"
+                "file": "GAS.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Git-GitHub"
+              "title": "Outline of GAS"
             }
           }
         ]
@@ -163,12 +168,8 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9a625333e01d8a83",
+  "active": "177e47ef730b4a5d",
   "lastOpenFiles": [
-    "Git-GitHub.md",
-    "images/Git-Icon-1788C.webp",
-    "images/WhatsApp Image 2023-02-14 at 14.38.43.jpeg",
-    "images",
-    "Nova pasta"
+    "GAS.md"
   ]
 }
